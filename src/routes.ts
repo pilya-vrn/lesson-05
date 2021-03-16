@@ -1,4 +1,4 @@
-import { bookGetAll } from "./controller/BookController";
+import { bookGetAll, bookGetById } from "./controller/BookController";
 import { App } from "./types/app";
 
 export const Routes: App.Route[] = [
@@ -6,5 +6,10 @@ export const Routes: App.Route[] = [
         method: 'get',
         path: '/books',
         action: bookGetAll
+    },
+    {
+        method: 'get',
+        path: '/books/:id',
+        action: bookGetById
     }
 ];

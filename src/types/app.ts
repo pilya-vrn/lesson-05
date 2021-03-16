@@ -3,7 +3,6 @@ import { LogLevel } from "../enum/log-level";
 
 export declare namespace App {
   namespace Config {
-
     interface Service {
       readonly port: number;
       readonly logLevel: LogLevel;
@@ -20,6 +19,22 @@ export declare namespace App {
       verbose(message: string): void
       debug(message: string): void
       silly(message: string): void
+    }
+  }
+
+  namespace Error {
+    interface HttpError {
+      readonly message: string;
+      readonly status: number;
+      readonly timestamp: Date
+    }
+
+    interface Body {
+      readonly message: string;
+      readonly status: number;
+      readonly timestamp: string;
+      readonly method: string;
+      readonly path: string;
     }
   }
 
