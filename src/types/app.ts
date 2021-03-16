@@ -26,7 +26,8 @@ export declare namespace App {
     interface HttpError {
       readonly message: string;
       readonly status: number;
-      readonly timestamp: Date
+      readonly timestamp: Date;
+      readonly errors: ReadonlyArray<string>;
     }
 
     interface Body {
@@ -35,6 +36,16 @@ export declare namespace App {
       readonly timestamp: string;
       readonly method: string;
       readonly path: string;
+      readonly errors: ReadonlyArray<string>;
+    }
+  }
+
+  namespace Book {
+    namespace Create {
+      interface Body {
+        title: string;
+        year: number;
+      }
     }
   }
 

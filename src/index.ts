@@ -10,6 +10,7 @@ import { Service } from "./enum/service";
 import { LogLevel } from "./enum/log-level";
 import { error } from "./utils";
 import { NotFoundError } from "./error/NotFoundError";
+import { BadRequestError } from "./error/BadRequestError";
 
 const config = container.resolve<App.Config.Service>(Service.Config)
 const logger = container.resolve<App.Logger.Service>(Service.Logger)
@@ -26,7 +27,11 @@ createConnection().then(async connection => {
             try {
                 await route.action(req, res, next)
             } catch (err) {
-                error(err, req, res)
+                if (err?.name === 'ValidationError') {
+                    error(new BadRequestError(err?.errors ?? []), req, res)
+                } else {
+                    error(err, req, res)
+                }
             }
         })
     })
