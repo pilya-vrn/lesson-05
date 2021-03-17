@@ -2,7 +2,8 @@
   "verbose": true,
   "ignore": [],
   "watch": [
-    "src"
+    "src",
+    "config/config.json"
   ],
   "ext": "ts",
   "exec": "npm start"
